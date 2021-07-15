@@ -2,7 +2,7 @@ import PaymentPlate from '../paymentPlate/PaymentPlate'
 import style from './PaymentList.module.scss'
 
 const PaymentList = (props) => {
-  let PaymentPlates = props.LilistContent.paymentList.map((p) => (
+  let PaymentPlates = props.LilistContent.map((p) => (
     <PaymentPlate
       key={p.name}
       id={p.id}

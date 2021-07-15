@@ -8,9 +8,19 @@ const Deposit = (props) => {
   let [success, check] = useState(false)
   if (success == false)
     return (
-      <div className={style.Main}>
-        <PaymentList LilistContent={props.listContent} upDate={setActiveForm} />
-        <PaymentForm ative={activeForm} up={check} />
+      <div>
+        <div className={style.Heder}>Deposit</div>
+        <div className={style.Main}>
+          <PaymentList
+            LilistContent={props.listContent.paymentList}
+            upDate={setActiveForm}
+          />
+          <PaymentForm
+            ative={activeForm}
+            up={check}
+            wallet={props.listContent.wallet}
+          />
+        </div>
       </div>
     )
   else return <div>Вы восхительны</div>

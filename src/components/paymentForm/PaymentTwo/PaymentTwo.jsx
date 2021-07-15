@@ -6,10 +6,22 @@ const PaymentTwo = (props) => {
   }
   return (
     <div>
-      <div className="wallet">wallet</div>
-      <div className="amount"></div>
-      <div className="email"></div>
-      <div className="ruotName"></div>
+      <div className="wallet">
+        WALLET
+        <input type="text" />
+      </div>
+      <div className="amount">
+        AMOUNT
+        <input type="text" />
+      </div>
+      <div className="email">
+        EMAIL
+        <input type="text" />
+      </div>
+      <div className="ruotName">
+        ROUTING NUMBER
+        <input type="text" />
+      </div>
       <button className={style.buttonW} onClick={active}>
         WITHDRAW
       </button>
