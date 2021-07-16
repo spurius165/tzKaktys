@@ -7,8 +7,13 @@ const PaymentOne = (props) => {
   let newBankName = React.createRef()
   let newBankAddress = React.createRef()
   let newBenCode = React.createRef()
+  let newCheck = React.createRef()
   let newF = React.createRef()
-  let [activeSelest, setActiveSelect] = useState('Выберите валюту')
+  let [activeSelest, setActiveSelect] = useState({
+    account: 'Account 3578',
+    code: 'USD',
+    value: '1000000',
+  })
   let [show, setShow] = useState(false)
   let active = () => {
     let flag = true
@@ -22,10 +27,12 @@ const PaymentOne = (props) => {
       newAmount.current.checkValidity() &&
       newBankAddress.current.checkValidity() &&
       newBankAddress.current.checkValidity() &&
-      newIban.current.checkValidity() + newBankName.current.checkValidity()
+      newIban.current.checkValidity() &&
+      newBankName.current.checkValidity() &&
+      newCheck.current.checked
     let sumObject = {
       id: '1',
-      wallet: activeSelest,
+      wallet: activeSelest.code,
       amount: amount,
       iban: iban,
       bankName: bankName,
@@ -43,7 +50,11 @@ const PaymentOne = (props) => {
       <li
         key={p.name}
         onClick={() => {
-          setActiveSelect(p.code + ' ' + p.value)
+          setActiveSelect({
+            account: 'Account 3578',
+            code: p.code,
+            value: p.value,
+          })
           setShow(!show)
         }}
       >
@@ -61,7 +72,10 @@ const PaymentOne = (props) => {
         <div>WALLET</div>
         <div className={show ? style.selectInputActiv : style.selectInput}>
           <div className={style.selectOptions} onClick={openSelect}>
-            <p>{activeSelest}</p>
+            <p>{activeSelest.account}</p>
+            <span className={style.activeSelect}>
+              {activeSelest.code + ' ' + activeSelest.value}
+            </span>
             <span className={style.arrow}>▼</span>
           </div>
           {show && <ul className={style.optionList}>{options}</ul>}
@@ -102,7 +116,12 @@ const PaymentOne = (props) => {
         <div>BENEFICIARY'S BANC SWIFT CODE</div>
         <input type="text" ref={newBenCode} placeholder="SABRUMMAC1" required />
       </div>
-      <input type="checkbox" className={style.checkB} name="checkB" />
+      <input
+        type="checkbox"
+        className={style.checkB}
+        name="checkB"
+        ref={newCheck}
+      />
       <label for="checkB" className={style.label}>
         I accept the Mterms and conditions, terms of business and privacy policy
       </label>

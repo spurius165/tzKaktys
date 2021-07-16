@@ -6,7 +6,12 @@ const PaymentTwo = (props) => {
   let newRoutingNumber = React.createRef()
   let newEmail = React.createRef()
   let newF = React.createRef()
-  let [activeSelest, setActiveSelect] = useState('Выберите валюту')
+  let newCheck = React.createRef()
+  let [activeSelest, setActiveSelect] = useState({
+    account: 'Account 3578',
+    code: 'USD',
+    value: '1000000',
+  })
   let [show, setShow] = useState(false)
   let active = () => {
     let flag = true
@@ -14,12 +19,13 @@ const PaymentTwo = (props) => {
     let email = newEmail.current.value
     let routingNumber = newRoutingNumber.current.value
     flag =
-      routingNumber.current.checkValidity() &&
+      newRoutingNumber.current.checkValidity() &&
       newAmount.current.checkValidity() &&
-      newEmail.current.checkValidity()
+      newEmail.current.checkValidity() &&
+      newCheck.current.checked
     let sumObject = {
       id: '2',
-      wallet: activeSelest,
+      wallet: activeSelest.code,
       amount: amount,
       email: email,
       routingNumber: routingNumber,
@@ -35,7 +41,11 @@ const PaymentTwo = (props) => {
       <li
         key={p.name}
         onClick={() => {
-          setActiveSelect(p.code + ' ' + p.value)
+          setActiveSelect({
+            account: 'Account 3578',
+            code: p.code,
+            value: p.value,
+          })
           setShow(!show)
         }}
       >
@@ -53,7 +63,10 @@ const PaymentTwo = (props) => {
         <div>WALLET</div>
         <div className={show ? style.selectInputActiv : style.selectInput}>
           <div className={style.selectOptions} onClick={openSelect}>
-            <p>{activeSelest}</p>
+            <p>{activeSelest.account}</p>
+            <span className={style.activeSelect}>
+              {activeSelest.code + ' ' + activeSelest.value}
+            </span>
             <span className={style.arrow}>▼</span>
           </div>
           {show && <ul className={style.optionList}>{options}</ul>}
@@ -76,7 +89,12 @@ const PaymentTwo = (props) => {
           required
         />
       </div>
-      <input type="checkbox" className={style.checkB} name="checkB" />
+      <input
+        type="checkbox"
+        className={style.checkB}
+        name="checkB"
+        ref={newCheck}
+      />
       <label for="checkB" className={style.label}>
         I accept the Mterms and conditions, terms of business and privacy policy
       </label>

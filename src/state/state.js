@@ -10,16 +10,6 @@ let state = {
       name: '2',
       url: '/image38.png',
     },
-    {
-      id: 3,
-      name: '13',
-      url: '/image39.png',
-    },
-    {
-      id: 4,
-      name: '22',
-      url: '/image38.png',
-    },
   ],
   wallet: [
     {

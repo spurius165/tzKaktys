@@ -106,7 +106,7 @@
     }
     .accountName {
       display: flex;
-      align-items: center;
+      align-items: flex-end;
       padding-left: 16px;
       p {
         border-bottom: 0;
@@ -134,4 +134,8 @@
   font-size: 8px;
   font-style: normal;
   font-weight: normal;
+}
+
+.activeSelect {
+  color: #c3b1cc;
 }
