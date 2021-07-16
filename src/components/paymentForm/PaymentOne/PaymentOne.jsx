@@ -7,14 +7,22 @@ const PaymentOne = (props) => {
   let newBankName = React.createRef()
   let newBankAddress = React.createRef()
   let newBenCode = React.createRef()
+  let newF = React.createRef()
   let [activeSelest, setActiveSelect] = useState('Выберите валюту')
   let [show, setShow] = useState(false)
   let active = () => {
+    let flag = true
     let amount = newAmount.current.value
     let iban = newIban.current.value
     let bankName = newBankName.current.value
     let bankAddress = newBankAddress.current.value
     let benCode = newBenCode.current.value
+    flag =
+      newBenCode.current.checkValidity() &&
+      newAmount.current.checkValidity() &&
+      newBankAddress.current.checkValidity() &&
+      newBankAddress.current.checkValidity() &&
+      newIban.current.checkValidity() + newBankName.current.checkValidity()
     let sumObject = {
       id: '1',
       wallet: activeSelest,
@@ -25,7 +33,7 @@ const PaymentOne = (props) => {
       benCode: benCode,
     }
     console.log(sumObject)
-    // props.up(true)
+    flag && props.up(true)
   }
   let openSelect = () => {
     setShow(!show)
@@ -48,7 +56,7 @@ const PaymentOne = (props) => {
     )
   })
   return (
-    <form className={style.all}>
+    <form className={style.all} ref={newF}>
       <div className="wallet">
         <div>WALLET</div>
         <div className={show ? style.selectInputActiv : style.selectInput}>
@@ -94,6 +102,10 @@ const PaymentOne = (props) => {
         <div>BENEFICIARY'S BANC SWIFT CODE</div>
         <input type="text" ref={newBenCode} placeholder="SABRUMMAC1" required />
       </div>
+      <input type="checkbox" className={style.checkB} name="checkB" />
+      <label for="checkB" className={style.label}>
+        I accept the Mterms and conditions, terms of business and privacy policy
+      </label>
       <button type="submit" className={style.buttonW} onClick={active}>
         WITHDRAW
       </button>

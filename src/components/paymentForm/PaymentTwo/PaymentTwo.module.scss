@@ -1,3 +1,137 @@
+.all {
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 20px;
+
+  text-transform: uppercase;
+
+  color: #867299;
+
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  margin: 8px 0px;
+  input {
+    background: #f9f7fb;
+    border: 1px solid #c8add8;
+    box-sizing: border-box;
+    border-radius: 4px;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    margin: 8px 0px;
+    width: 100%;
+    height: 40px;
+    left: 0px;
+    padding-left: 16px;
+    &::placeholder {
+      color: #d0bcda;
+    }
+  }
+  .checkB {
+    width: 20px;
+    height: 20px;
+    border: 1px solid #845195;
+    border-radius: 3px;
+    background-color: #845195;
+  }
+}
+
 .buttonW {
-  background-color: blueviolet;
+  background-color: #845195;
+  color: #ffffff;
+  width: 100%;
+  height: 40px;
+}
+
+.selectInputActiv {
+  background: #ffffff;
+  border: 1px solid #c8add8;
+  box-sizing: border-box;
+  border-radius: 4px;
+  margin: 8px 0px;
+  height: 40px;
+  left: 0px;
+  position: relative;
+}
+
+.selectOptions {
+  // background: #ffffff;
+  /* _border/ui control/Default */
+  display: flex;
+  align-items: center;
+  // border: 1px solid #4e326a;
+  p {
+    flex: 1;
+    border-bottom: 0;
+    padding-left: 16px;
+  }
+  .arrow {
+    padding-right: 5px;
+  }
+}
+
+.selectInput {
+  background: #f9f7fb;
+  /* _border/btn/Default */
+
+  border: 1px solid #c8add8;
+  box-sizing: border-box;
+  border-radius: 4px;
+  margin: 8px 0px;
+  height: 40px;
+  left: 0px;
+  position: relative;
+}
+.optionList {
+  background: white;
+  position: absolute;
+  border: 1px solid #c8add8;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  li {
+    width: 100%;
+    list-style: none;
+    padding: 12px;
+    p {
+      margin: 0;
+    }
+    .accountName {
+      display: flex;
+      align-items: center;
+      padding-left: 16px;
+      p {
+        border-bottom: 0;
+        color: #827c86;
+      }
+      span {
+        border-bottom: 0;
+        padding-left: 16px;
+        color: #532c6c;
+      }
+    }
+  }
+  .des {
+    color: #aaa5ad;
+    display: block;
+    padding-left: 16px;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: normal;
+  }
+}
+
+.label {
+  color: #4a4a4a;
+  font-size: 8px;
+  font-style: normal;
+  font-weight: normal;
 }
