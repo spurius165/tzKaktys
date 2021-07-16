@@ -13,16 +13,22 @@ const PaymentTwo = (props) => {
     value: '1000000',
   })
   let [show, setShow] = useState(false)
+  let [amou, setAmou] = useState(true)
+  let [mail, setMail] = useState(true)
+  let [rout, setRout] = useState(true)
   let active = () => {
     let flag = true
     let amount = newAmount.current.value
     let email = newEmail.current.value
     let routingNumber = newRoutingNumber.current.value
-    flag =
-      newRoutingNumber.current.checkValidity() &&
-      newAmount.current.checkValidity() &&
-      newEmail.current.checkValidity() &&
-      newCheck.current.checked
+
+    newAmount.current.checkValidity() === false ? setAmou(false) : setAmou(true)
+
+    newRoutingNumber.current.checkValidity() === false
+      ? setRout(false)
+      : setRout(true)
+    newEmail.current.checkValidity() === false ? setMail(false) : setMail(true)
+    flag = amou && rout && mail && newCheck.current.checked
     let sumObject = {
       id: '2',
       wallet: activeSelest.code,
@@ -74,25 +80,40 @@ const PaymentTwo = (props) => {
       </div>
       <div className="amount">
         <div>AMOUNT</div>
-        <input type="number" ref={newAmount} placeholder="0" min="0" required />
+        <input
+          type="number"
+          ref={newAmount}
+          placeholder="0"
+          min="0"
+          required
+          className={amou ? style.i : style.error}
+        />
       </div>
       <div className="email">
         <div>EMAIL</div>
-        <input type="email" ref={newEmail} placeholder="Your email" required />
+        <input
+          type="email"
+          ref={newEmail}
+          placeholder="Your email"
+          required
+          className={mail ? style.i : style.error}
+        />
       </div>
-      <div className="">
+      <div>
         <div>ROUTING NUMBER</div>
         <input
           type="NUMBER"
           ref={newRoutingNumber}
           placeholder="123124123"
           required
+          className={rout ? style.i : style.error}
         />
       </div>
       <input
         type="checkbox"
         className={style.checkB}
         name="checkB"
+        required
         ref={newCheck}
       />
       <label for="checkB" className={style.label}>

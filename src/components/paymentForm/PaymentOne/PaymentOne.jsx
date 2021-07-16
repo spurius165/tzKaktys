@@ -15,6 +15,11 @@ const PaymentOne = (props) => {
     value: '1000000',
   })
   let [show, setShow] = useState(false)
+  let [amou, setAmou] = useState(true)
+  let [ban, setBan] = useState(true)
+  let [banName, setBanName] = useState(true)
+  let [banAddress, setAddress] = useState(true)
+  let [ben, setBen] = useState(true)
   let active = () => {
     let flag = true
     let amount = newAmount.current.value
@@ -22,14 +27,18 @@ const PaymentOne = (props) => {
     let bankName = newBankName.current.value
     let bankAddress = newBankAddress.current.value
     let benCode = newBenCode.current.value
+    newAmount.current.checkValidity() === false ? setAmou(false) : setAmou(true)
+    newBenCode.current.checkValidity() === false ? setBen(false) : setBen(true)
+    newBankAddress.current.checkValidity() === false
+      ? setAddress(false)
+      : setAddress(true)
+    newIban.current.checkValidity() === false ? setBan(false) : setBan(true)
+    newBankName.current.checkValidity() === false
+      ? setBanName(false)
+      : setBanName(true)
     flag =
-      newBenCode.current.checkValidity() &&
-      newAmount.current.checkValidity() &&
-      newBankAddress.current.checkValidity() &&
-      newBankAddress.current.checkValidity() &&
-      newIban.current.checkValidity() &&
-      newBankName.current.checkValidity() &&
-      newCheck.current.checked
+      newCheck.current.checked && ban && banAddress && banName && ben && amou
+    console.log(newCheck.current.checked)
     let sumObject = {
       id: '1',
       wallet: activeSelest.code,
@@ -83,7 +92,14 @@ const PaymentOne = (props) => {
       </div>
       <div className="amount">
         <div>AMOUNT</div>
-        <input type="number" ref={newAmount} placeholder="0" min="0" required />
+        <input
+          type="number"
+          ref={newAmount}
+          placeholder="0"
+          min="0"
+          required
+          className={amou ? style.i : style.error}
+        />
       </div>
       <div className="iban">
         <div>IBAN/BANC ACCOUNT</div>
@@ -92,6 +108,7 @@ const PaymentOne = (props) => {
           ref={newIban}
           placeholder="Your banc IBAN"
           required
+          className={ban ? style.i : style.error}
         />
       </div>
       <div className="bankName">
@@ -101,6 +118,7 @@ const PaymentOne = (props) => {
           ref={newBankName}
           placeholder="Full bank name"
           required
+          className={banName ? style.i : style.error}
         />
       </div>
       <div className="bankAdres">
@@ -110,17 +128,25 @@ const PaymentOne = (props) => {
           ref={newBankAddress}
           placeholder="City, street"
           required
+          className={banAddress ? style.i : style.error}
         />
       </div>
       <div className="benCode">
         <div>BENEFICIARY'S BANC SWIFT CODE</div>
-        <input type="text" ref={newBenCode} placeholder="SABRUMMAC1" required />
+        <input
+          type="text"
+          ref={newBenCode}
+          placeholder="SABRUMMAC1"
+          required
+          className={ben ? style.i : style.error}
+        />
       </div>
       <input
         type="checkbox"
         className={style.checkB}
         name="checkB"
         ref={newCheck}
+        required
       />
       <label for="checkB" className={style.label}>
         I accept the Mterms and conditions, terms of business and privacy policy
