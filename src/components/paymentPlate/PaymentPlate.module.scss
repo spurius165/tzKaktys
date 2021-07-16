@@ -1,8 +1,12 @@
 .item {
   display: subgrid;
-  width: 200px;
-  height: 200px;
-  margin: 5px;
+
+  &:nth-child(odd) {
+    margin-right: 6px;
+  }
+  &:nth-child(even) {
+    margin-left: 6px;
+  }
 }
 
 button {
@@ -10,9 +14,13 @@ button {
   border: 1px solid #d1d2dd;
   box-sizing: border-box;
   border-radius: 6px;
+  width: 179px;
+  height: 80px;
+  width: 100%;
+  margin-bottom: 12px;
 
   img {
-    width: 100%;
-    height: 100%;
+    width: 50%;
+    height: 50%;
   }
 }

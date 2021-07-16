@@ -3,29 +3,36 @@ let state = {
     {
       id: 1,
       name: '1',
-      url: '/image38.png',
+      url: '/image39.png',
     },
     {
       id: 2,
       name: '2',
-      url: '/image39.png',
+      url: '/image38.png',
     },
     {
       id: 3,
-      name: '3',
-      url: ' ',
+      name: '13',
+      url: '/image39.png',
+    },
+    {
+      id: 4,
+      name: '22',
+      url: '/image38.png',
     },
   ],
   wallet: [
     {
       value: 123124,
-      cod: 'USD',
+      code: 'USD',
       name: 'green',
+      des: '',
     },
     {
       value: 121235345345,
-      cod: 'RUB',
+      code: 'RUB',
       name: 'wood',
+      des: 'M.Premium',
     },
   ],
 }

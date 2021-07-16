@@ -5,44 +5,53 @@ const PaymentOne = (props) => {
   let newAmount = React.createRef()
   let newIban = React.createRef()
   let newBankName = React.createRef()
-  let newBankAdres = React.createRef()
+  let newBankAddress = React.createRef()
   let newBenCode = React.createRef()
+  let [activeSelest, setActiveSelect] = useState('Выберите валюту')
+  let [show, setShow] = useState(false)
   let active = () => {
     let amount = newAmount.current.value
     let iban = newIban.current.value
     let bankName = newBankName.current.value
-    let bankAdres = newBankAdres.current.value
+    let bankAddress = newBankAddress.current.value
     let benCode = newBenCode.current.value
     let sumObject = {
       id: '1',
-      wallet: '',
+      wallet: activeSelest,
       amount: amount,
       iban: iban,
       bankName: bankName,
-      bankAdres: bankAdres,
+      bankAddress: bankAddress,
       benCode: benCode,
     }
     console.log(sumObject)
-    props.up(true)
+    // props.up(true)
   }
-  let [activeSelest, setActiveSelect] = useState('Выберите валюту')
-  let [show, setShow] = useState(false)
   let openSelect = () => {
     setShow(!show)
   }
   let options = props.wallet.map((p) => {
     return (
-      <li key={p.name} onClick={() => setActiveSelect(p.cod + ' ' + p.value)}>
-        <p>{p.cod}</p>
-        <span>{p.value}</span>
+      <li
+        key={p.name}
+        onClick={() => {
+          setActiveSelect(p.code + ' ' + p.value)
+          setShow(!show)
+        }}
+      >
+        <div className={style.accountName}>
+          <p>{p.code}</p>
+          <span>{p.value}</span>
+        </div>
+        <p className={style.des}>{p.des}</p>
       </li>
     )
   })
   return (
-    <div>
+    <form className={style.all}>
       <div className="wallet">
-        WALLET
-        <div className={style.selectInput}>
+        <div>WALLET</div>
+        <div className={show ? style.selectInputActiv : style.selectInput}>
           <div className={style.selectOptions} onClick={openSelect}>
             <p>{activeSelest}</p>
             <span className={style.arrow}>▼</span>
@@ -51,29 +60,44 @@ const PaymentOne = (props) => {
         </div>
       </div>
       <div className="amount">
-        AMOUNT
-        <input type="text" ref={newAmount} />
+        <div>AMOUNT</div>
+        <input type="number" ref={newAmount} placeholder="0" min="0" required />
       </div>
       <div className="iban">
-        IBAN/BANC ACCOUNT
-        <input type="text" ref={newIban} />
+        <div>IBAN/BANC ACCOUNT</div>
+        <input
+          type="text"
+          ref={newIban}
+          placeholder="Your banc IBAN"
+          required
+        />
       </div>
       <div className="bankName">
-        BANK NAME
-        <input type="text" ref={newBankName} />
+        <div>BANK NAME</div>
+        <input
+          type="text"
+          ref={newBankName}
+          placeholder="Full bank name"
+          required
+        />
       </div>
       <div className="bankAdres">
-        BANK ADDRESS
-        <input type="text" ref={newBankAdres} />
+        <div>BANK ADDRESS</div>
+        <input
+          type="text"
+          ref={newBankAddress}
+          placeholder="City, street"
+          required
+        />
       </div>
       <div className="benCode">
-        BENEFICIARY'S BANC SWIFT CODE
-        <input type="text" ref={newBenCode} />
+        <div>BENEFICIARY'S BANC SWIFT CODE</div>
+        <input type="text" ref={newBenCode} placeholder="SABRUMMAC1" required />
       </div>
-      <button className={style.buttonW} onClick={active}>
+      <button type="submit" className={style.buttonW} onClick={active}>
         WITHDRAW
       </button>
-    </div>
+    </form>
   )
 }
 

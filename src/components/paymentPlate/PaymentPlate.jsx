@@ -5,12 +5,10 @@ const PaymentPlate = (props) => {
     props.upDate(props.id)
   }
   return (
-    <div>
-      <div className={style.item}>
-        <button onClick={active}>
-          <img src={props.url} alt={props.name} />
-        </button>
-      </div>
+    <div className={style.item}>
+      <button onClick={active}>
+        <img src={props.url} alt={props.name} />
+      </button>
     </div>
   )
   // {props.img.paymentList[1].url}

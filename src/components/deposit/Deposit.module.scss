@@ -1,16 +1,68 @@
-.Heder {
+.Deposit {
+  position: relative;
   color: #4a4a4a;
-  font-family: Open Sans;
-  font-style: normal;
   font-weight: 600;
   font-size: 28px;
   line-height: 38px;
+  margin: auto;
+  width: 960px;
+  margin-top: 20px;
+}
+@media (min-width: 1200px) {
+  .Deposit {
+    width: 1140px;
+  }
 }
 .Main {
   display: grid;
-
+  padding: 16px;
   grid-template-areas: 'p f';
-
   grid-template-columns: 3fr 4fr;
   grid-gap: 8px;
+  position: relative;
+  padding-bottom: 29px;
+  background-color: #ffffff;
+  font-size: 12px;
+  line-height: 20px;
+
+  background: #ffffff;
+  border-radius: 6px;
+  margin-top: 20px;
+}
+
+.form {
+  position: absolute;
+  top: 40%;
+  left: 40%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  .checkMark {
+    color: #ffffff;
+    background-color: #4ead45;
+    height: 72px;
+    width: 72px;
+    border-radius: 50%;
+    align-content: center;
+    display: flex;
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 16px;
+    align-items: center;
+    span {
+      flex: 1;
+    }
+  }
+
+  .buttonOff {
+    background-color: #85439a;
+    color: #ffffff;
+    height: 40px;
+    width: 184px;
+    margin-top: 41px;
+  }
+
+  .lable {
+    font-size: 36px;
+  }
 }
