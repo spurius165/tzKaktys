@@ -5,19 +5,43 @@
   font-size: 28px;
   line-height: 38px;
   margin: auto;
-  width: 960px;
+  width: 300px;
   margin-top: 20px;
 }
 @media (min-width: 1200px) {
   .Deposit {
     width: 1140px;
   }
+  .Main {
+    grid-template-areas: 'p f';
+    grid-template-columns: 3fr 4fr;
+  }
+}
+@media (min-width: 992px) {
+  .Deposit {
+    width: 960px;
+  }
+  .Main {
+    grid-template-areas: 'p f';
+    grid-template-columns: 3fr 4fr;
+  }
+}
+@media (min-width: 768px) {
+  .Deposit {
+    width: 700px;
+  }
+  .Main {
+    grid-template-areas:
+      'p'
+      'f';
+  }
 }
 .Main {
   display: grid;
   padding: 16px;
-  grid-template-areas: 'p f';
-  grid-template-columns: 3fr 4fr;
+  grid-template-areas:
+    'p'
+    'f';
   grid-gap: 8px;
   position: relative;
   padding-bottom: 29px;

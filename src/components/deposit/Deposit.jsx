@@ -15,6 +15,7 @@ const Deposit = (props) => {
             <PaymentList
               LilistContent={props.listContent.paymentList}
               upDate={setActiveForm}
+              active={activeForm}
             />
             <PaymentForm
               ative={activeForm}

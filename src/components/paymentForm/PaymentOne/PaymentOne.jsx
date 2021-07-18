@@ -54,6 +54,9 @@ const PaymentOne = (props) => {
   let openSelect = () => {
     setShow(!show)
   }
+  let selectBlur = () => {
+    setShow(false)
+  }
   let options = props.wallet.map((p) => {
     return (
       <li
@@ -77,7 +80,7 @@ const PaymentOne = (props) => {
   })
   return (
     <form className={style.all} ref={newF}>
-      <div className="wallet">
+      <div className="wallet" onMouseLeave={selectBlur}>
         <div>WALLET</div>
         <div className={show ? style.selectInputActiv : style.selectInput}>
           <div className={style.selectOptions} onClick={openSelect}>

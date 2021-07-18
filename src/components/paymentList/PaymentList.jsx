@@ -9,6 +9,7 @@ const PaymentList = (props) => {
       name={p.name}
       url={p.url}
       upDate={props.upDate}
+      active={props.active}
     />
   ))
   return (

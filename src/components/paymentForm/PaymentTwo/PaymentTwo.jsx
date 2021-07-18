@@ -1,5 +1,5 @@
 import style from './PaymentTwo.module.scss'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 const PaymentTwo = (props) => {
   let newAmount = React.createRef()
@@ -42,6 +42,12 @@ const PaymentTwo = (props) => {
   let openSelect = () => {
     setShow(!show)
   }
+  let selectBlur = () => {
+    setShow(false)
+  }
+  // useEffect(() => {
+  //   console.log(show)
+  // })
   let options = props.wallet.map((p) => {
     return (
       <li
@@ -65,7 +71,7 @@ const PaymentTwo = (props) => {
   })
   return (
     <form className={style.all} ref={newF}>
-      <div className="wallet">
+      <div className="wallet" onMouseLeave={selectBlur}>
         <div>WALLET</div>
         <div className={show ? style.selectInputActiv : style.selectInput}>
           <div className={style.selectOptions} onClick={openSelect}>
